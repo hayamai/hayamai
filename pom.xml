@@ -106,8 +106,8 @@
 							<arguments>
 								<argument>-classpath</argument>
 								<classpath />
+								<argument>/opt/app-root/src/.m2/</argument>
 								<argument>com.google.gwt.dev.Compiler</argument>
-								<argument>-generateAsync</argument>
 								<argument>-war</argument>
 								<argument>org.gestion.chiic.chiic</argument>
 							</arguments>
