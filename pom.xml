@@ -107,6 +107,7 @@
 								<argument>-classpath</argument>
 								<classpath />
 								<argument>com.google.gwt.dev.Compiler</argument>
+								<argument>-generateAsync</argument>
 								<argument>-war</argument>
 								<argument>org.gestion.chiic.chiic</argument>
 							</arguments>
