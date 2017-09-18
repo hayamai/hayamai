@@ -35,11 +35,6 @@
   </dependencyManagement>
 
   <dependencies>
-	  <dependency>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>gwt-maven-plugin</artifactId>
-        <version>2.8.1</version>
-	  </dependency>
   
     <dependency>
       <groupId>com.google.gwt</groupId>
@@ -71,7 +66,7 @@
     <plugins>
 
       <!-- Mojo's Maven Plugin for GWT -->
-	  <!--
+	  
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
@@ -85,17 +80,18 @@
             </goals>
           </execution>
         </executions>
-        Plugin configuration. There are many available options, see 
-          gwt-maven-plugin documentation at codehaus.org 
+        <!--Plugin configuration. There are many available options, see 
+          gwt-maven-plugin documentation at codehaus.org -->
         <configuration>
+		<extraJvmArgs>-Dgwt.jjs.permutationWorkerFactory=com.google.gwt.dev.ThreadedPermutationWorkerFactory</extraJvmArgs>		
           <runTarget>chiic.html</runTarget>
           <modules>
             <module>org.gestion.chiic.chiic</module>
           </modules>
         </configuration>
       </plugin>
-	  -->
 	  
+	  <!--
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -120,7 +116,7 @@
 					</execution>
 				</executions>
 			</plugin>	  
-	  
+	  -->
 	  
     </plugins>
   </build>
