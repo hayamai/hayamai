@@ -65,6 +65,7 @@
     <plugins>
 
       <!-- Mojo's Maven Plugin for GWT -->
+	  <!--
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
@@ -78,8 +79,8 @@
             </goals>
           </execution>
         </executions>
-        <!-- Plugin configuration. There are many available options, see 
-          gwt-maven-plugin documentation at codehaus.org -->
+        Plugin configuration. There are many available options, see 
+          gwt-maven-plugin documentation at codehaus.org 
         <configuration>
           <runTarget>chiic.html</runTarget>
           <modules>
@@ -87,6 +88,34 @@
           </modules>
         </configuration>
       </plugin>
+	  -->
+	  
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<id>compile-js</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>java</executable>
+							<arguments>
+								<argument>-classpath</argument>
+								<classpath />
+								<argument>com.google.gwt.dev.Compiler</argument>
+								<argument>-war</argument>
+								<argument>org.gestion.chiic.chiic</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>	  
+	  
+	  
     </plugins>
   </build>
 
