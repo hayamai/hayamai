@@ -1,0 +1,51 @@
+<!--
+  #%L
+  GwtMaterial
+  %%
+  Copyright (C) 2015 - 2016 GwtMaterialDesign
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+        xmlns:g='urn:import:com.google.gwt.user.client.ui'
+        xmlns:m="urn:import:gwt.material.design.client.ui">
+
+    <ui:with field="res" type="com.anniema.mosquee.client.resources.AppResources"/>
+
+    <m:MaterialPanel>
+        <m:MaterialHeader>
+            <m:MaterialNavBar activates="sidenav">
+                <m:MaterialNavBrand paddingLeft="60" text="Masjid An Ni'ma" />
+                <m:MaterialNavSection float="RIGHT">
+<!--                     <m:MaterialLink text="Link 1"/> -->
+                    <m:MaterialLink iconType="HOME" />
+                </m:MaterialNavSection>
+            </m:MaterialNavBar>
+            <m:MaterialSideNav m:id="sidenav" type="PUSH" width="280" alwaysShowActivator="true" showOnAttach="true">
+                <m:MaterialLink ui:field="link1" text="La mosquée" iconType="HOME"/>
+                <m:MaterialLink text="Activités " iconType="BOOK"/>
+                <m:MaterialLink text="Projets" iconType="INFO"/>
+            </m:MaterialSideNav>
+        </m:MaterialHeader>
+
+        <m:MaterialContainer>
+            <m:MaterialPanel textAlign="CENTER">
+                <m:MaterialIcon marginTop="120" textColor="BLUE_DARKEN_1" iconType="EVENT" iconSize="LARGE"/>
+                <m:MaterialLabel text="Masjid An Ni'ma" textColor="BLUE" fontSize="2em"/>
+                <m:MaterialLabel text="En cours de construction ...." textColor="BLUE" fontSize="0.8em"/>
+            </m:MaterialPanel>
+        </m:MaterialContainer>
+
+    </m:MaterialPanel>
+</ui:UiBinder>
