@@ -92,12 +92,16 @@
           <mainClass>com.google.gwt.dev.Compiler</mainClass>
           <arguments>
             <argument>-war</argument>
-			<argument>org.gestion.chiic.chiic</argument>
           </arguments>
           <systemProperties>
             <systemProperty>
             </systemProperty>
           </systemProperties>
+          <runTarget>chiic.html</runTarget>
+          <modules>
+            <module>org.gestion.chiic.chiic</module>
+          </modules>
+		  
         </configuration>
         <dependencies>
           <dependency>
