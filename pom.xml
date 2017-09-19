@@ -78,7 +78,7 @@
 							<goal>java</goal>
 						</goals>
 						<configuration>
-						<includeProjectDependencies>false</includeProjectDependencies>
+						<includeProjectDependencies>true</includeProjectDependencies>
 						<includePluginDependencies>true</includePluginDependencies>
 						<executableDependency>
 							<groupId>org.codehaus.mojo</groupId>
