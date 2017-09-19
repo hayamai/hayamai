@@ -75,16 +75,15 @@
 						<id>compile-js</id>
 						<phase>prepare-package</phase>
 						<goals>
-							<goal>exec</goal>
+							<goal>java</goal>
 						</goals>
 						<configuration>
 						<executableDependency>
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>gwt-maven-plugin</artifactId>
 							</executableDependency>
-						<executable>java</executable>
+							<mainClass>com.google.gwt.dev.Compiler</mainClass>
 							<arguments>
-								<argument>com.google.gwt.dev.Compiler</argument>
 								<argument>org.gestion.chiic.chiic</argument>
 							</arguments>
 						</configuration>
