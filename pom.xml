@@ -90,6 +90,8 @@
 								<argument>org.gestion.chiic.chiic</argument>
 							</arguments>
 						</configuration>
+					</execution>
+				</executions>
 						<dependencies>
           <dependency>
             <groupId>org.codehaus.mojo</groupId>
@@ -98,8 +100,7 @@
             <type>jar</type>
           </dependency>
         </dependencies>
-					</execution>
-				</executions>
+				
 			</plugin>
 	  
     </plugins>
