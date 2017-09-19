@@ -149,6 +149,21 @@
 <!--         </dependency> -->
 
         <!-- GWTP -->
+		
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-mvp-client</artifactId>
+            <version>1.5.3</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- DI -->
+        <dependency>
+            <groupId>com.google.gwt.inject</groupId>
+            <artifactId>gin</artifactId>
+            <version>2.1.2</version>
+            <scope>provided</scope>
+        </dependency>
+		
          <!-- GwtMaterial -->
         <dependency>
             <groupId>com.github.gwtmaterialdesign</groupId>
