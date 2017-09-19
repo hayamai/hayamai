@@ -35,7 +35,6 @@
   </dependencyManagement>
 
   <dependencies>
-  
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-servlet</artifactId>
@@ -62,27 +61,32 @@
   <build>
     <!-- Output classes directly into the webapp, so that IDEs and "mvn process-classes" update them in DevMode -->
     <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
-	<defaultGoal>clean install</defaultGoal>
+
     <plugins>
 
       <!-- Mojo's Maven Plugin for GWT -->
-	  
-
-
-
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.6.0</version>
-		</plugin>
-		<plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>gwt-maven-plugin</artifactId>
-			<version>2.8.1</version>
-		</plugin>
-
-			
-	  
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>2.8.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>test</goal>
+              <goal>generateAsync</goal>
+            </goals>
+          </execution>
+        </executions>
+        <!-- Plugin configuration. There are many available options, see 
+          gwt-maven-plugin documentation at codehaus.org -->
+        <configuration>
+          <runTarget>chiic.html</runTarget>
+          <modules>
+            <module>org.gestion.chiic.chiic</module>
+          </modules>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
