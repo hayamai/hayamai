@@ -78,14 +78,14 @@
 							<goal>java</goal>
 						</goals>
 						<configuration>
+						<includeProjectDependencies>false</includeProjectDependencies>
+						<includePluginDependencies>true</includePluginDependencies>
 						<executableDependency>
 							<groupId>org.codehaus.mojo</groupId>
 							<artifactId>gwt-maven-plugin</artifactId>
 							</executableDependency>
 							<mainClass>com.google.gwt.dev.Compiler</mainClass>
 							<arguments>
-								<argument>-classpath</argument>
-								<classpath />
 								<argument>org.gestion.chiic.chiic</argument>
 							</arguments>
 						</configuration>
