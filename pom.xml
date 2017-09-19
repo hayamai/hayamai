@@ -84,6 +84,8 @@
 							</executableDependency>
 							<mainClass>com.google.gwt.dev.Compiler</mainClass>
 							<arguments>
+								<argument>-classpath</argument>
+								<classpath />
 								<argument>org.gestion.chiic.chiic</argument>
 							</arguments>
 						</configuration>
