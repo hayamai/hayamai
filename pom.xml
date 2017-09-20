@@ -1,223 +1,161 @@
-<!--
-  #%L
-  GwtMaterial
-  %%
-  Copyright (C) 2015 - 2016 GwtMaterialDesign
-  %%
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-  
-       http://www.apache.org/licenses/LICENSE-2.0
-  
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
-  #L%
-  -->
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.gestion</groupId>
+   <artifactId>chiic</artifactId>
+   <packaging>war</packaging>
+   <name>chiic</name>
+   <version>1.0</version>
 
-    <groupId>com.anniema</groupId>
-    <artifactId>mosquee</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+   <properties>
+      <!--
+         Explicitly declaring the source encoding eliminates the following message:
+         [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+      -->
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <!--
+         To set the jboss.home environment variable the Maven way, set the jboss.home property in an active profile in
+         the Maven 2 settings.xml file
+      -->
+      <jboss.home>${env.JBOSS_HOME}</jboss.home>
+      <jboss.domain>default</jboss.domain>
+      <!-- The version of Weld extensions in use -->
+      <weld.extensions.version>1.0.0-CR2</weld.extensions.version>
+   </properties>
 
-    <name>Basic Template for using GWT Material Design</name>
-    <url>https://github.com/GwtMaterialDesign</url>
+   <repositories>
+       <!-- Several key Java EE APIs and RIs are missing from the Maven Central Repository -->
+       <!-- The goal is to eventually eliminate the reliance on the JBoss repository -->
+       <repository>
+          <id>repository.jboss.org</id>
+          <name>JBoss Repository</name>
+          <url>http://repository.jboss.org/maven2</url>
+       </repository>
+   </repositories>
 
-    <properties>
-        <app.id>mosquee</app.id>
-        <app.version>1</app.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gwt.version>2.8.0</gwt.version>
-        <gwtp.version>1.6</gwtp.version>
-        <gin.version>2.1.2</gin.version>
-        <gwt-material.version>2.0-rc6</gwt-material.version>
-        <gwt-material-table.version>2.0-rc6</gwt-material-table.version>
-        <gwt.style>OBF</gwt.style>
-
-        <!-- maven -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-
-        <target.jdk>1.8</target.jdk>
-
-        <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-    </properties>
-
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>Central Repository</name>
-            <url>http://central.maven.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>sonatype-nexus-snapshot</id>
-            <name>Sonatype Nexus snapshot repository</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </repository>
-    </repositories>
-
-    <build>
-        <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
-
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${target.jdk}</source>
-                    <target>${target.jdk}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-
-            <!-- GWT -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>gwt-maven-plugin</artifactId>
-                <version>${gwt.version}</version>
-                <configuration>
-                    <strict>true</strict>
-
-                    <testTimeOut>180</testTimeOut>
-                    <mode>htmlunit</mode>
-                    <includes>**/*GwtTest.java</includes>
-
-                    <logLevel>DEBUG</logLevel>
-
-                    <runTarget>index.html</runTarget>
-                    <module>com.anniema.mosquee.Mosquee</module>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
-    
-        <!-- GWT -->
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-servlet</artifactId>
-            <version>${gwt.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-user</artifactId>
-            <version>${gwt.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-dev</artifactId>
-            <version>${gwt.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- JDT -->
-<!--         <dependency> -->
-<!--             <groupId>javax.servlet</groupId> -->
-<!--             <artifactId>javax.servlet-api</artifactId> -->
-<!--             <version>3.1.0</version> -->
-<!--             <scope>provided</scope> -->
-<!--         </dependency> -->
-
-        <!-- GWTP -->
-		
-        <dependency>
-            <groupId>com.gwtplatform</groupId>
-            <artifactId>gwtp-mvp-client</artifactId>
-            <version>1.5.3</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- DI -->
-        <dependency>
-            <groupId>com.google.gwt.inject</groupId>
-            <artifactId>gin</artifactId>
-            <version>2.1.2</version>
-            <scope>provided</scope>
-        </dependency>
-		
-         <!-- GwtMaterial -->
-        <dependency>
-            <groupId>com.github.gwtmaterialdesign</groupId>
-            <artifactId>gwt-material</artifactId>
-            <version>${gwt-material.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.gwtmaterialdesign</groupId>
-            <artifactId>gwt-material-themes</artifactId>
-            <version>${gwt-material.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.gwtmaterialdesign</groupId>
-            <artifactId>gwt-material-addins</artifactId>
-            <version>${gwt-material.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.gwtmaterialdesign</groupId>
-            <artifactId>gwt-material-table</artifactId>
-            <version>${gwt-material-table.version}</version>
-        </dependency>
-
-        <!-- DI -->
-        <dependency>
-            <groupId>com.google.gwt.inject</groupId>
-            <artifactId>gin</artifactId>
-            <version>${gin.version}</version>
-            <scope>provided</scope>
-        </dependency>
-<!-- GWT Maps API V3 -->
-<dependency>
-    <groupId>com.github.branflake2267</groupId>
-    <artifactId>gwt-maps-api</artifactId>
-    <version>3.10.0-alpha-7</version>
-</dependency>
+   <dependencyManagement>
+      <dependencies>
+         <!-- Import scope will provide versions for dependencies below. -->
          <dependency>
-            <groupId>com.googlecode.gwtquery</groupId>
-            <artifactId>gwtquery</artifactId>
-            <version>1.4.4-SNAPSHOT</version>
-            <scope>provided</scope>
-            <exclusions>
-              <exclusion>
-                <groupId>com.google.gwt</groupId>
-                <artifactId>gwt-elemental</artifactId>
-              </exclusion>
-            </exclusions>
-        </dependency>
+            <groupId>org.jboss.weld</groupId>
+            <artifactId>weld-extensions-bom</artifactId>
+            <version>${weld.extensions.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+         </dependency>
+      </dependencies>
+   </dependencyManagement>
+   <dependencies>
+      <!-- CDI (JSR-299) -->
+      <dependency>
+         <groupId>javax.enterprise</groupId>
+         <artifactId>cdi-api</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <!-- EJB -->
+      <dependency>
+         <groupId>org.jboss.ejb3</groupId>
+         <artifactId>jboss-ejb3-api</artifactId>
+         <scope>provided</scope>
+         <version>3.1.0</version>
+      </dependency>
+      <!-- Common annotations (e.g., @PostConstruct, @PreDestroy, @Generated, @Resource) -->
+      <dependency>
+         <groupId>javax.annotation</groupId>
+         <artifactId>jsr250-api</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <!-- Bean Validation (JSR-303) -->
+      <dependency>
+         <groupId>javax.validation</groupId>
+         <artifactId>validation-api</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <!-- Bean Validation Implementation -->
+      <!-- Provides portable constraints such as @NotEmpty, @Email and @Url -->
+      <!-- Hibernate Validator is only the JSR-303 implementation at the moment, so we can assume it's provided -->
+      <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-validator</artifactId>
+         <version>4.0.0.GA</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JSF -->
+      <dependency>
+         <groupId>javax.faces</groupId>
+         <artifactId>jsf-api</artifactId>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JPA -->
+      <dependency>
+         <groupId>javax.persistence</groupId>
+         <artifactId>persistence-api</artifactId>
+         <scope>provided</scope>
+      </dependency>
 
-        <!-- JUnit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+      <!-- Optional, but highly recommended. -->
+      <dependency>
+         <groupId>org.testng</groupId>
+         <artifactId>testng</artifactId>
+         <version>5.10</version>
+         <scope>test</scope>
+         <classifier>jdk15</classifier>
+      </dependency>
+
+      <!-- Needed on JBoss AS as EL is out of date -->
+      <dependency>
+         <groupId>org.glassfish.web</groupId>
+         <artifactId>el-impl</artifactId>
+         <scope>runtime</scope>
+         <!-- FIXME this version should be in the Weld API BOM -->
+         <version>2.1.2-b04</version>
+         <exclusions>
+            <exclusion>
+               <groupId>javax.el</groupId>
+               <artifactId>el-api</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+   </dependencies>
+   <build>
+      <finalName>${artifactId}</finalName>
+      <plugins>
+         <!-- Compiler plugin enforces Java 1.6 compatiblity -->
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+               <source>1.6</source>
+               <target>1.6</target>
+            </configuration>
+         </plugin>
+
+         <!-- Eclipse plugin can force download of source and JavaDoc jars -->
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-eclipse-plugin</artifactId>
+            <configuration>
+               <wtpversion>2.0</wtpversion>
+               <!--
+               <downloadSources>true</downloadSources>
+               <downloadJavadocs>true</downloadJavadocs>
+               -->
+            </configuration>
+         </plugin>
+
+         <!-- Configure the JBoss AS Maven deploy plugin -->
+         <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>jboss-maven-plugin</artifactId>
+            <configuration>
+               <jbossHome>${jboss.home}</jbossHome>
+               <serverName>${jboss.domain}</serverName>
+               <fileNames>
+                  <fileName>${project.build.directory}/${build.finalName}.war</fileName>
+               </fileNames> 
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
 </project>
