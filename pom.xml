@@ -95,7 +95,7 @@
                     <mode>htmlunit</mode>
                     <includes>**/*GwtTest.java</includes>
 
-                    <logLevel>INFO</logLevel>
+                    <logLevel>DEBUG</logLevel>
 
                     <runTarget>index.html</runTarget>
                     <module>com.anniema.mosquee.Mosquee</module>
